@@ -7,14 +7,14 @@ from flask import request
 from flask_pymongo import PyMongo
 import os
 from dotenv import load_dotenv
-import datetime
+from datetime import datetime
 import model
 
 load_dotenv()
 # -- Initialization section --
 
 app = Flask(__name__)
-app.jinja_env.globals['current_time'] = datetime.datetime.now()
+app.jinja_env.globals['current_time'] = datetime.now()
 # -- Initialization section --
 
 
@@ -26,7 +26,7 @@ app.config['MONGO_DBNAME'] = MONGO_DBNAME
 app.config['MONGO_URI'] = f'mongodb+srv://{MONGO_DB_USERNAME}:{MONGO_DB_PASSWORD}@user-game-data.yi30k.mongodb.net/{MONGO_DBNAME}?retryWrites=true&w=majority'
 mongo = PyMongo(app)
 
-app.jinja_env.globals['current_time'] = datetime.datetime.now()
+app.jinja_env.globals['current_time'] = datetime.now()
 
 MONGO_DBNAME = os.getenv("MONGO_DBNAME")
 MONGO_DB_USERNAME = os.getenv("MONGO_DB_USERNAME")
@@ -41,4 +41,4 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', time=datetime.now())
