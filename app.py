@@ -51,6 +51,14 @@ def game_recs():
         form = request.form
         # console = form["console"]
         # genre = form["genre"]
-        return render_template("game_recs.html", form = form)
 
-        
+        """
+        event = {
+        'name':form['eventName'],
+        'date':form['eventDate'],
+        }
+
+        events = mongo.db['events-list']
+        events.insert(event)
+        """
+        return render_template("game_recs.html", form = form)
