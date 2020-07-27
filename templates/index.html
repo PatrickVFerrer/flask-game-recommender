@@ -18,19 +18,26 @@
 
 {% block content%}
 <br>
-<form class= "form-inline" style="text-align:center inline-block;">
-
-<div class="container input-group">
-<select class="form-control  mb-2 mr-sm-2 form-control-lg col col-lg-12" placeholder= "Select Your Console">
+<div class="container">
+<h3> Welcome to this page. We know that you're stuck home in quarantine and sick of making bread so why not try a video game. To get started enter your console, genre then press submit. <h3>
+</div>
+<br>
+<div class="form">
+<form class= "form-inline" action="game_recs" method="POST">
+<div class="container col col-lg-3"> 
+</div>
+<div class="container col col-lg-2">
+<select name= "console" class="form-control  mb-2 mr-sm-2 form-control-lg col col-lg-12" placeholder="Select Your Console" >
   <option>PS4</option>
   <option>XBox One</option>
   <option>Nintendo Switch</option>
+  <option>Apple/Android</option>
 </select>
 </div>
 
-<div class="container">
+<div class="container col col-lg-2">
 
-<select class="form-control  mb-2 mr-sm-2 form-control-lg col col-lg-12" placeholder="Select Your Genre">
+<select name="genre" class="form-control  mb-2 mr-sm-2 form-control-lg col col-lg-12" placeholder="Select Your Genre">
   <option>Action</option>
   <option>First Person Shooter</option>
   <option>Indie</option>
@@ -38,28 +45,14 @@
   <option>Racing</option>
   <option>Simulator</option>
 </select>
-
+</div>
+<div class="container col col-lg-1"> 
 <button type="submit" class="btn btn-primary mb-2">Submit</button>
-
+</div>
+<div class="container col col-lg-3"> 
+</div>
 </form>
 
-<div class="container">
-<select class="form-control form-control-lg col col-lg-6">
-  <option>PS4</option>
-  <option>XBox One</option>
-  <option>Nintendo Switch</option>
-</select>
 </div>
-
-<div class="container">
-
-<select class="form-control form-control-lg col col-lg-6">
-  <option>Action</option>
-  <option>First Person Shooter</option>
-  <option>Indie</option>
-  <option>RPG</option>
-  <option>Racing</option>
-  <option>Simulator</option>
-</select>
 
 {% endblock %}
