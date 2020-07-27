@@ -1,17 +1,3 @@
-<!-- <html>
-    <head>
-        <title>Welcome!</title>
-    </head>
-    <body>
-        <h1>Hello world!</h1>
-        <p>We can build a full webpage here</p>
-        <form>
-            <input type="text" name="nickname" placeholder="Enter your nickname"/>
-            <input type="submit" value="Submit"/>
-        </form>
-    </body>
-</html> -->
-
 {% extends 'base.html'%}
 
 {% block title%}Homepage{% endblock %}
@@ -19,40 +5,55 @@
 {% block content%}
 <br>
 <div class="container">
-<h3> Welcome to this page. We know that you're stuck home in quarantine and sick of making bread so why not try a video game. To get started enter your console, genre then press submit. <h3>
+    <h3> Welcome to this page. We know that you're stuck home in quarantine and sick of making bread so why not try a video game. 
+    To get started enter your console, genre then press submit. </h3>
 </div>
 <br>
 <div class="form">
-<form class= "form-inline" action="game_recs" method="POST">
-<div class="container col col-lg-3"> 
-</div>
-<div class="container col col-lg-2">
-<select name= "console" class="form-control  mb-2 mr-sm-2 form-control-lg col col-lg-12" placeholder="Select Your Console" >
-  <option>PS4</option>
-  <option>XBox One</option>
-  <option>Nintendo Switch</option>
-  <option>Apple/Android</option>
-</select>
-</div>
+    <form class= "form-inline" action="game_recs" method="POST">
+        <div class="container col col-lg-3"></div>
+        <div class="container col col-lg-2">
+            <select name= "console" class="form-control  mb-2 mr-sm-2 form-control-lg col col-lg-12" placeholder="Select Your Console" >
+                <option>PS4</option>
+                <option>XBox One</option>
+                <option>Nintendo Switch</option>
+                <option>Apple/Android</option>
+            </select>
+        </div>
+        <div class="container col col-lg-2">
+            <select name="genre" class="form-control  mb-2 mr-sm-2 form-control-lg col col-lg-12" placeholder="Select Your Genre">
+                <option>Point-and-click</option>
+                <option>Fighting</option>
+                <option>Shooter</option>
+                <option>Music</option>
+                <option>Platform</option>
+                <option>Puzzle</option>
+                <option>Racing</option>
+                <option>Real Time Strategy (RTS)</option>
+                <option>Role-playing (RPG)</option>
+                <option>Simulator</option>
+                <option>Sport</option>
+                <option>Strategy</option>
+                <option>Turn-based strategy (TBS)</option>
+                <option>Tactical</option>
+                <option>Hack and slash/Beat 'em up</option>
+                <option>Quiz/Trivia</option>
+                <option>Pinball</option>
+                <option>Adventure</option>
+                <option>Indie</option>
+                <option>Arcade</option>
+                <option>Visual Novel</option>
+                <option>Card & Board Game</option>
+                <option>MOBA</option>
+            </select>
+        </div>
 
-<div class="container col col-lg-2">
+        <div class="container col col-lg-1"> 
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </div>
 
-<select name="genre" class="form-control  mb-2 mr-sm-2 form-control-lg col col-lg-12" placeholder="Select Your Genre">
-  <option>Action</option>
-  <option>First Person Shooter</option>
-  <option>Indie</option>
-  <option>RPG</option>
-  <option>Racing</option>
-  <option>Simulator</option>
-</select>
-</div>
-<div class="container col col-lg-1"> 
-<button type="submit" class="btn btn-primary mb-2">Submit</button>
-</div>
-<div class="container col col-lg-3"> 
-</div>
-</form>
-
+        <div class="container col col-lg-3"></div>
+    </form>
 </div>
 
 {% endblock %}
