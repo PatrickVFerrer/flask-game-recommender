@@ -53,4 +53,3 @@ def game_recs():
         # genre = form["genre"]
         return render_template("game_recs.html", form = form)
 
-        
