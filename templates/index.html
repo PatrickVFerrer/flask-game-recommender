@@ -17,9 +17,11 @@
 {% block title%}Homepage{% endblock %}
 
 {% block content%}
+<br>
+<form class= "form-inline" style="text-align:center inline-block;">
 
-<div class="container">
-<select class="form-control form-control-lg col col-lg-6">
+<div class="container input-group">
+<select class="form-control  mb-2 mr-sm-2 form-control-lg col col-lg-12" placeholder= "Select Your Console">
   <option>PS4</option>
   <option>XBox One</option>
   <option>Nintendo Switch</option>
@@ -28,7 +30,7 @@
 
 <div class="container">
 
-<select class="form-control form-control-lg col col-lg-6">
+<select class="form-control  mb-2 mr-sm-2 form-control-lg col col-lg-12" placeholder="Select Your Genre">
   <option>Action</option>
   <option>First Person Shooter</option>
   <option>Indie</option>
@@ -37,9 +39,12 @@
   <option>Simulator</option>
 </select>
 
+<button type="submit" class="btn btn-primary mb-2">Submit</button>
+
+</form>
 
 
-<h1> Stuff goes here </h1>
+
 
 {% endblock %}
 
