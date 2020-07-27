@@ -15,3 +15,21 @@
     background-color: var(--oxford-blue);
     color: var(--lavender-gray);
 }
+
+
+form
+{
+    text-align:center;
+}
+
+form div.container select{
+    display: inline-block;
+}
+
+
+form div.col{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
