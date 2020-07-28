@@ -53,43 +53,44 @@ API_params = {
         """
     }
 
-def get_platform_ids():
-    API_command = "platforms"     
-    id_list = []
-    for platform in ALL_PLATFORMS:
-        # print(f"Query {i}")
-        API_params["data"] = f"""
-            fields name, id;
-            where name = "{platform}";
-        """
-        API_url = API_endpoint + API_command
-        r = requests.post(API_url, **API_params)
-        data = r.json()
-        pprint(data)
-        id_list.append(data[0]["id"])
-    print(len(id_list))
-    print(len(ALL_PLATFORMS))
-    return id_list
+# 
+def get_games(platform, genre):
+    game_list = []
+    API_command = "games"
+    platform_id = ALL_PLATFORM_IDS[ALL_PLATFORMS.index(platform)]
+    genre_id = ALL_GENRE_IDS[ALL_GENRES.index(genre)]    
+    API_params["data"] = f"""
+        fields *;
+        where platforms = {platform_id} & genres = {genre_id};
+        sort popularity desc;
+        limit 50;
+    """
+    API_url = API_endpoint + API_command
+    r = requests.post(API_url, **API_params)
+    game_list = r.json()
+    pprint(game_list)
+# 
+# pprint(get_games(x, y))
 
-pprint(get_platform_ids())
-
-# def get_games(platform, genre):
-#     API_command = "games"     
-#     game_list = []
-#     API_params["data"] = f"""
-#         fields *;
-#         where name = ;
-#     """
-#     API_url = API_endpoint + API_command
-#     r = requests.post(API_url, **API_params)
-#     data = r.json()
-#     pprint(data)
-#     id_list.append(data[0]["id"])
+# def get_platform_ids():
+#     API_command = "platforms"     
+#     id_list = []
+#     for platform in ALL_PLATFORMS:
+#         # print(f"Query {i}")
+#         API_params["data"] = f"""
+#             fields name, id;
+#             where name = "{platform}";
+#         """
+#         API_url = API_endpoint + API_command
+#         r = requests.post(API_url, **API_params)
+#         data = r.json()
+#         pprint(data)
+#         id_list.append(data[0]["id"])
 #     print(len(id_list))
-#     print(len(ALL_GENRES))
+#     print(len(ALL_PLATFORMS))
 #     return id_list
-
-# pprint(get_genre_ids())
+# 
+# pprint(get_platform_ids())
 
 # def get_genre_ids():
 #     API_command = "genres"     
@@ -108,7 +109,7 @@ pprint(get_platform_ids())
 #     print(len(id_list))
 #     print(len(ALL_GENRES))
 #     return id_list
-
+# 
 # pprint(get_genre_ids())
 
 # API_command = "games"
@@ -137,7 +138,7 @@ pprint(get_platform_ids())
 #             continue
 #         platform_list.append(data[0]["name"])
 #     return platform_list
-
+# 
 # pprint(get_all_platforms())
 
 # def get_all_genres():
@@ -165,7 +166,7 @@ pprint(get_platform_ids())
 # 
 # pprint(data)
 # print(API_url)
-
+# 
 # pprint(r.content)
 
 # from igdb.wrapper import IGDBWrapper

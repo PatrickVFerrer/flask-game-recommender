@@ -46,7 +46,7 @@ def index():
 @app.route('/game_recs', methods=["GET","POST"])
 def game_recs():
     if request.method == 'GET':
-        return "Don't know how you got there go back and fill the form"
+        return redirect(url_for("index"))
     else:
         form = request.form
         console = form["console"]
