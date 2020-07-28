@@ -1,28 +1,26 @@
-<!-- <html>
-    <head>
-        <title>Welcome!</title>
-    </head>
-    <body>
-        <h1>Hello world!</h1>
-        <p>We can build a full webpage here</p>
-        <form>
-            <input type="text" name="nickname" placeholder="Enter your nickname"/>
-            <input type="submit" value="Submit"/>
-        </form>
-    </body>
-</html> -->
-
 {% extends 'base.html'%}
 
-{% block title%}Homepage{% endblock %}
+{% block title%}Recommendations{% endblock %}
 
 {% block content%}
-
-<h1> {{form["console"]}} {{form["genre"]}} </h1>
-
-
-
-
+    <div class="card-deck">
+        {% for game in games %}
+            <div class="card mb-3 container" style="min-width: 600px; max-width: 600px; min-height:250px; max-height:250px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4 fill" style="">
+                        <img src="{{ model.get_cover(game['id']) }}" class="card-img" alt="..." style="">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{game["name"]}}</h5>
+                            <p class="card-text">{{game["summary"]}}</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
 
 
