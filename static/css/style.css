@@ -25,3 +25,13 @@ form
 form div.container select{
     display: inline-block;
 }
+body{
+    background-image: url("https://www.guinnessworldrecords.com/Images/Top-10-best-selling-consoles_tcm25-551954.jpg");
+    /* background-size: cover;  */
+}
+.jumbotron{
+    color: white;
+    background-color: var(--usafa-blue);
+    background-size: cover;
+}
+

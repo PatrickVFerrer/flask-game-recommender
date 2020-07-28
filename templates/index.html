@@ -4,14 +4,20 @@
 
 {% block content%}
 <br>
-<div class="container">
-    <h3> Welcome to this page. We know that you're stuck home in quarantine and sick of making bread so why not try a video game. 
-    To get started enter your console, genre then press submit. </h3>
-</div>
+<br>
+<br>
+<div class="jumbotron container">
+  <h1 class="display-4">Let's recommend you a game!</h1>
+  <p class="lead">Welcome to this page. We know that you're stuck home in quarantine and sick of making bread so why not try a video game. 
+    To get started enter your console, genre then press submit.</p>
+  <hr class="my-4">
+  
+
+
 <br>
 <div class="form">
     <form class= "form-inline" action="game_recs" method="POST">
-        <div class="container col col-lg-3"></div>
+        <div class="container col col-lg-2"></div>
         <div class="container col col-lg-2">
             <select name= "console" class="form-control  mb-2 mr-sm-2 form-control-lg col col-lg-12" placeholder="Select Your Console" >
                 <option>PC (Microsoft Windows)</option>
@@ -62,13 +68,13 @@
                 <option>MOBA</option>
             </select>
         </div>
-
+        <p class = "lead">
         <div class="container col col-lg-1"> 
-            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            <button type="submit" class="btn btn-info btn-lg">Submit</button>
         </div>
-
-        <div class="container col col-lg-3"></div>
+        </p>
+        <div class="container col col-lg-2"></div>
     </form>
 </div>
-
+</div>
 {% endblock %}
