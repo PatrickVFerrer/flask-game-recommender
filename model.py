@@ -1,11 +1,12 @@
 from dotenv import load_dotenv
+from pprint import pprint ### SYNC THIS WITH FARHAN!
 import requests
 import os
 
 load_dotenv()
 
 YOUR_API_KEY = os.getenv("YOUR_API_KEY")
-
+###############     NOTE: THEY HAVE IMAGES!     ###############
 ### Group together RTS, Strategy, TBS, Tactical
 ### Group together Pinball, Quiz/Trivia, Arcade
 ### Rename "Beat 'em up" to "Brawler" in drop-down selection
@@ -50,7 +51,7 @@ API_params["data"] = """
 API_url = API_endpoint + API_command
 r = requests.post(API_url, **API_params)
 data = r.json()
-print(data)
+pprint(data)
 
 # def get_all_platforms():
 #     API_command = "platforms"
@@ -69,7 +70,7 @@ print(data)
 #         platform_list.append(data[0]["name"])
 #     return platform_list
 
-# print(get_all_platforms())
+# pprint(get_all_platforms())
 
 # def get_all_genres():
 #     API_command = "genres"     
@@ -88,16 +89,16 @@ print(data)
 #         genre_list.append(data[0]["name"])
 #     return genre_list
 # 
-# print(get_all_genres())
+# pprint(get_all_genres())
 
 # API_url = API_endpoint + API_command
 # r = requests.post(API_url, **API_params)
 # data = r.json()
 # 
-# print(data)
+# pprint(data)
 # print(API_url)
 
-# print(r.content)
+# pprint(r.content)
 
 # from igdb.wrapper import IGDBWrapper
 # from igdb.igdbapi_pb2 import GameResult
