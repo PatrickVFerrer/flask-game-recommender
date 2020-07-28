@@ -49,7 +49,7 @@ API_params = {
         'headers': {'user-key': YOUR_API_KEY},
         'data': """
             fields *;
-            where 
+            where name = "Twisted Fusion";
         """
     }
 
@@ -58,9 +58,9 @@ def get_games(platform, genre):
     game_list = []
     API_command = "games"
     platform_id = ALL_PLATFORM_IDS[ALL_PLATFORMS.index(platform)]
-    genre_id = ALL_GENRE_IDS[ALL_GENRES.index(genre)]    
+    genre_id = ALL_GENRE_IDS[ALL_GENRES.index(genre)]
     API_params["data"] = f"""
-        fields *;
+        fields cover, id, name, platforms, release_dates, rating, rating_count, summary, url;
         where platforms = {platform_id} & genres = {genre_id};
         sort popularity desc;
         limit 50;

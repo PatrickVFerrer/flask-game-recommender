@@ -51,7 +51,7 @@ def game_recs():
         form = request.form
         console = form["console"]
         genre = form["genre"]
-
+        model.get_games(console, genre)
         """
         event = {
         'name':form['eventName'],
