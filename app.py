@@ -49,8 +49,8 @@ def game_recs():
         return "Don't know how you got there go back and fill the form"
     else:
         form = request.form
-        # console = form["console"]
-        # genre = form["genre"]
+        console = form["console"]
+        genre = form["genre"]
 
         """
         event = {
