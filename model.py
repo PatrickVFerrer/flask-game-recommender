@@ -60,17 +60,36 @@ def get_games(platform, genre):
     platform_id = ALL_PLATFORM_IDS[ALL_PLATFORMS.index(platform)]
     genre_id = ALL_GENRE_IDS[ALL_GENRES.index(genre)]
     API_params["data"] = f"""
-        fields cover, id, name, platforms, release_dates, rating, rating_count, summary, url;
+        fields cover, id, name, platforms, release_dates, rating, rating_count, summary;
         where platforms = {platform_id} & genres = {genre_id};
         sort popularity desc;
-        limit 50;
+        limit 45;
     """
     API_url = API_endpoint + API_command
     r = requests.post(API_url, **API_params)
     game_list = r.json()
-    pprint(game_list)
-# 
-# pprint(get_games(x, y))
+    # pprint(game_list)
+    return game_list
+
+def get_cover(id):
+    API_command = "covers"
+    API_params["data"] = f"""
+        fields *;
+        where game = {id};
+    """
+    # print(API_params["data"])
+    API_url = API_endpoint + API_command
+    r = requests.post(API_url, **API_params)
+    data = r.json()
+    # pprint(data)
+    if data.copy() == [].copy():
+        return "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif"
+    else:
+        # print(data[0]["url"].replace("//", ""))
+        image_id = data[0]["image_id"]
+        # if image_id == "":
+        #     return ""
+        return f"https://images.igdb.com/igdb/image/upload/t_cover_big/{image_id}.jpg"
 
 # def get_platform_ids():
 #     API_command = "platforms"     
@@ -169,14 +188,3 @@ def get_games(platform, genre):
 # 
 # pprint(r.content)
 
-# from igdb.wrapper import IGDBWrapper
-# from igdb.igdbapi_pb2 import GameResult
-# 
-# wrapper = IGDBWrapper(YOUR_API_KEY)
-# IGDB_request = wrapper.api_request(
-#     'games.pb', # Note the '.pb' suffix at the endpoint
-#     'fields id, name; offset 0; where platforms=48;'
-# )
-# 
-# games_message = GameResult()
-# games_message.ParseFromString(IGDB_request)

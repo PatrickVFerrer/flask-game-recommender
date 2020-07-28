@@ -16,23 +16,35 @@
     color: var(--lavender-gray);
 }
 
-
-form
-{
+form {
     text-align:center;
 }
 
-form div.container select{
+form div.container select {
     display: inline-block;
 }
-body{
+
+body {
     background-image: url("/static/images/index_bg.jpg");
     background-position: 0px 55px;
     background-size: 50vw 47vh;
 }
-.jumbotron{
+
+.jumbotron {
     color: white;
     background-color: var(--usafa-blue);
     background-size: cover;
 }
 
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.fill img {
+    flex-shrink: 0;
+    max-width: 90%;
+    max-height: 90%
+}
