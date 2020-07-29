@@ -58,11 +58,13 @@ def get_games(platform, genre):
     API_command = "games"
     platform_id = ALL_PLATFORM_IDS[ALL_PLATFORMS.index(platform)]
     genre_id = ALL_GENRE_IDS[ALL_GENRES.index(genre)]
+    keyword_DLC = '{541}'
+    keyword_adult = '{1714}'
     API_params["data"] = f"""
         fields id, name, genres, platforms, release_dates, total_rating, total_rating_count, summary, keywords, popularity;
-        where platforms = {platform_id} & genres = {genre_id} & keywords != {'{1714}'} & keywords != {'{541}'};
+        where platforms = {platform_id} & genres = {genre_id} & keywords != {keyword_adult} & keywords != {keyword_DLC};
         sort total_rating desc;
-        limit 45;
+        limit 80;
     """
     API_url = API_endpoint + API_command
     r = requests.post(API_url, **API_params)
@@ -74,6 +76,7 @@ def get_games(platform, genre):
     return game_list
 
 def get_cover(id):
+    no_cover = "/static/images/nc-md.jpg"
     API_command = "covers"
     API_params["data"] = f"""
         fields *;
@@ -85,7 +88,7 @@ def get_cover(id):
     data = r.json()
     # pprint(data)
     if data.copy() == [].copy():
-        return "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif"
+        return no_cover
     else:
         # for item in data:
         #     if not ("image_id" in item.keys()):
@@ -93,12 +96,51 @@ def get_cover(id):
         try:
             image_id = data[0]["image_id"]
         except KeyError:
-            return "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif"
+            return no_cover
         else:
             image_id = data[0]["image_id"]
         # if image_id == "":
         #     return ""
     return f"https://images.igdb.com/igdb/image/upload/t_cover_big/{image_id}.jpg"
+
+def style_summary(game):
+    try:
+        summary = game["summary"]
+    except KeyError:
+        return "overflow:hidden;"
+    else:
+        summary = game["summary"]
+
+    length = len(summary)
+
+    if length <= 300:
+        return "overflow:hidden;"
+    else:
+        return "overflow:scroll; overflow-x:hidden;"
+
+def get_summary(game):
+    try:
+        summary = game["summary"]
+    except KeyError:
+        return "No description available."
+    else:
+        return game["summary"]
+
+# def get_summary(game):
+#     try:
+#         summary = game["summary"]
+#     except KeyError:
+#         return ""
+#     else:
+#         summary = game["summary"]
+
+#     words = summary.split(" ")
+#     word_count = len(words)
+
+#     if word_count <= 50:
+#         return summary
+#     else:
+#         return " ".join(words[:51]) + " . . ."
 
 # def get_platform_ids():
 #     API_command = "platforms"     
