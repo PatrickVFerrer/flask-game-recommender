@@ -3,19 +3,21 @@
 {% block title%}Recommendations{% endblock %}
 
 {% block content%}
-    <div class="card-deck">
+    <div class="card-deck" style="text-align:center; padding-left: 1%; padding-top: 1%;">
         {% for game in games %}
-            <div class="card mb-3" style="min-width: 600px; max-width: 600px; min-height:250px; max-height:250px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4 fill" style="">
-                        <img src="{{ model.get_cover(game['id']) }}" class="card-img img-fluid img-thumbnail " alt="..." style="max-height:240px; max-width: 300px;">
+            <div class="card mb-3" style="min-width: 600px; max-width: 600px; min-height:330px; max-height:330px;">
+                <div class="row no-gutters" style="overflow:hidden;">
+                    <div class="col-md-4" style="overflow:hidden;">
+                        <img src="{{ model.get_cover(game['id']) }}" class="card-img" alt="..." style="">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 border-left border-secondary" style="min-height:330px; max-height:330px;">
                         <div class="card-body">
                             <h5 class="card-title">{{game["name"]}}</h5>
-                            <p class="card-text">{{game["summary"]}}</p>
-                            <button type="button" class="btn btn-primary">Add to wishlist</button>
-
+                            <br/>
+                            <div class="container rounded border" style="min-height: 195px; max-height: 195px; {{ model.style_summary(game) }}">
+                                <p class="card-text">{{ model.get_summary(game) }}</p>
+                            </div>
+                            <!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
                         </div>
                     </div>
                 </div>
@@ -23,7 +25,3 @@
         {% endfor %}
     </div>
 {% endblock %}
-
-
-
-
