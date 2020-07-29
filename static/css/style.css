@@ -17,7 +17,7 @@
 }
 
 form {
-    text-align:center;
+    text-align: center;
 }
 
 form div.container select {
@@ -36,6 +36,7 @@ body {
     background-size: cover;
 }
 
+/*
 .fill {
     display: flex;
     justify-content: center;
@@ -47,4 +48,4 @@ body {
     flex-shrink: 0;
     max-width: 90%;
     max-height: 90%
-}
+}*/
