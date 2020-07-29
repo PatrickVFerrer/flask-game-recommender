@@ -53,22 +53,24 @@ API_params = {
         """
     }
 
-# 
 def get_games(platform, genre):
     game_list = []
     API_command = "games"
     platform_id = ALL_PLATFORM_IDS[ALL_PLATFORMS.index(platform)]
     genre_id = ALL_GENRE_IDS[ALL_GENRES.index(genre)]
     API_params["data"] = f"""
-        fields cover, id, name, platforms, release_dates, rating, rating_count, summary;
-        where platforms = {platform_id} & genres = {genre_id};
-        sort popularity desc;
+        fields id, name, genres, platforms, release_dates, total_rating, total_rating_count, summary, keywords, popularity;
+        where platforms = {platform_id} & genres = {genre_id} & keywords != {'{1714}'} & keywords != {'{541}'};
+        sort total_rating desc;
         limit 45;
     """
     API_url = API_endpoint + API_command
     r = requests.post(API_url, **API_params)
     game_list = r.json()
     # pprint(game_list)
+    # for game in game_list:
+    #     if "parent_game" in game.keys():
+    #         game_list.remove(game)
     return game_list
 
 def get_cover(id):
@@ -85,11 +87,18 @@ def get_cover(id):
     if data.copy() == [].copy():
         return "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif"
     else:
-        # print(data[0]["url"].replace("//", ""))
-        image_id = data[0]["image_id"]
+        # for item in data:
+        #     if not ("image_id" in item.keys()):
+        #         return "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif"
+        try:
+            image_id = data[0]["image_id"]
+        except KeyError:
+            return "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif"
+        else:
+            image_id = data[0]["image_id"]
         # if image_id == "":
         #     return ""
-        return f"https://images.igdb.com/igdb/image/upload/t_cover_big/{image_id}.jpg"
+    return f"https://images.igdb.com/igdb/image/upload/t_cover_big/{image_id}.jpg"
 
 # def get_platform_ids():
 #     API_command = "platforms"     
