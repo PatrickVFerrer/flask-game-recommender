@@ -12,8 +12,7 @@
 }
 
 #navigate {
-    background-color: var(--oxford-blue);
-    color: var(--lavender-gray);
+    background-color: var(--oxford-blue-3);
 }
 
 form {
@@ -24,16 +23,21 @@ form div.container select {
     display: inline-block;
 }
 
-body {
+#index_body {
     background-image: url("/static/images/index_bg.jpg");
-    background-position: 0px 55px;
+    background-position: 0px 135px;
     background-size: 50vw 47vh;
+    height: 100%;
 }
 
 .jumbotron {
     color: white;
     background-color: var(--usafa-blue);
     background-size: cover;
+}
+
+html, body {
+    height: 100%;
 }
 
 /*
