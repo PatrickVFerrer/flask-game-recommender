@@ -7,8 +7,10 @@ from flask_pymongo import PyMongo
 import os
 from dotenv import load_dotenv
 from datetime import datetime
+from pprint import pprint
 import model
 import requests
+import json
 
 load_dotenv()
 # -- Initialization section --
@@ -52,3 +54,17 @@ def game_recs():
         events.insert(event)
         """
         return render_template("game_recs.html", games=games, model=model, time=datetime.now())
+
+@app.route('/wishlist', methods=["GET", "POST"])
+def wishlist():
+    if request.method == 'GET':
+        games = mongo.db.games.find({})
+        return render_template('wishlist.html', games=games, model=model, time=datetime.now())
+    else:
+        form = request.form
+        # pprint(form)
+        # print(form["game"])
+        game = json.loads(form["game"].replace("'", '"'))
+        mongo.db.games.insert(game)
+        games = mongo.db.games.find({})
+        return render_template('wishlist.html', games=games, model=model, time=datetime.now())
