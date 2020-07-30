@@ -51,4 +51,4 @@ def game_recs():
         events = mongo.db['events-list']
         events.insert(event)
         """
-        return render_template("game_recs.html", games=games, model=model)
+        return render_template("game_recs.html", games=games, model=model, time=datetime.now())
