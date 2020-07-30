@@ -26,4 +26,4 @@ app.config['MONGO_URI'] = f'mongodb+srv://{MONGO_DB_USERNAME}:{MONGO_DB_PASSWORD
 
 mongo = PyMongo(app)
 
-mongo.db.games.remove({"name": "Cell to Singularity - Evolution Never Ends"})
+mongo.db.games.remove({})

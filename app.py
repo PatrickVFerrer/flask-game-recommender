@@ -10,7 +10,6 @@ from datetime import datetime
 from pprint import pprint
 import model
 import requests
-import json
 
 load_dotenv()
 # -- Initialization section --
@@ -62,9 +61,8 @@ def wishlist():
         return render_template('wishlist.html', games=games, model=model, time=datetime.now())
     else:
         form = request.form
-        # pprint(form)
-        # print(form["game"])
-        game = json.loads(form["game"].replace("'", '"'))
+        game = eval(form["game"])
         mongo.db.games.insert(game)
+        
         games = mongo.db.games.find({})
         return render_template('wishlist.html', games=games, model=model, time=datetime.now())
