@@ -1,23 +1,35 @@
-<!-- <html>
-    <head>
-        <title>Welcome!</title>
-    </head>
-    <body>
-        <h1>Hello world!</h1>
-        <p>We can build a full webpage here</p>
-        <form>
-            <input type="text" name="nickname" placeholder="Enter your nickname"/>
-            <input type="submit" value="Submit"/>
-        </form>
-    </body>
-</html> -->
-
 {% extends 'base.html'%}
 
-{% block title%}Homepage{% endblock %}
+{% block title%}Wishlist{% endblock %}
 
 {% block content%}
-
-<h1> Stuff goes here </h1>
-
+<div class="card-deck" style="
+    background-image: url('/static/images/recommender_results_bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100vw 100vh;
+    text-align: center;
+    padding-left: 1%;
+    padding-top: 1%;
+    height: 100%;
+    ">
+    {% for game in games %}
+        <div class="card mb-3" style="color: white; background-color: #4774C2; min-width: 600px; max-width: 600px; min-height:390px; max-height:390px;">
+            <div class="row no-gutters" style="overflow:hidden;">
+                <div class="col-md-4" style="overflow:hidden; min-height:100%; max-height:100%;">
+                    <img src="{{ model.get_cover(game['id']) }}" class="card-img" alt="..." style="vertical-align: middle;">
+                </div>
+                <div class="col-md-8 border-left border-secondary" style="min-height:100%; max-height:100%;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{game["name"]}}</h5>
+                        <br/>
+                        <div class="container rounded border" style="min-height: 195px; max-height: 195px; {{ model.style_summary(game) }}">
+                            <p class="card-text">{{ model.get_summary(game) }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
