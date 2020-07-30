@@ -1,0 +1,57 @@
+
+:root {
+    --oxford-blue: hsla(219, 100%, 10%, 1);
+    --oxford-blue-2: hsla(219, 100%, 14%, 1);
+    --oxford-blue-3: hsla(212, 100%, 17%, 1);
+    --dark-cornflower-blue: hsla(211, 97%, 25%, 1);
+    --independence: hsla(220, 29%, 28%, 1);
+    --usafa-blue: hsla(210, 96%, 33%, 1);
+    --resolution-blue: hsla(228, 100%, 28%, 1);
+    --wild-blue-yonder: hsla(218, 50%, 73%, 1);
+    --timberwolf: hsla(77, 9%, 84%, 1);
+    --lavender-gray: hsla(245, 8%, 74%, 1);
+}
+
+#navigate {
+    background-color: var(--oxford-blue-3);
+}
+
+form {
+    text-align: center;
+}
+
+form div.container select {
+    display: inline-block;
+}
+
+#index_body {
+    background-image: url("/static/images/index_bg.jpg");
+    background-position: 0px 135px;
+    background-size: 50vw 47vh;
+    height: 100%;
+}
+
+.jumbotron {
+    color: white;
+    background-color: var(--usafa-blue);
+    background-size: cover;
+}
+
+html, body {
+    height: 100%;
+}
+
+/*
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.fill img {
+    flex-shrink: 0;
+    max-width: 90%;
+    max-height: 90%
+}
+*/

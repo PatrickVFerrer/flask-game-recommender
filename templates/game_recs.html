@@ -3,9 +3,17 @@
 {% block title%}Recommendations{% endblock %}
 
 {% block content%}
-    <div class="card-deck" style="text-align:center; padding-left: 1%; padding-top: 1%;">
+    <div class="card-deck" style="
+        background-image: url('/static/images/recommender_results_bg.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100vw 100vh;
+        text-align: center;
+        padding-left: 1%;
+        padding-top: 1%;
+        ">
         {% for game in games %}
-            <div class="card mb-3" style="min-width: 600px; max-width: 600px; min-height:330px; max-height:330px;">
+            <div class="card mb-3" style="color: white; background-color: #4774C2; min-width: 600px; max-width: 600px; min-height:330px; max-height:330px;">
                 <div class="row no-gutters" style="overflow:hidden;">
                     <div class="col-md-4" style="overflow:hidden;">
                         <img src="{{ model.get_cover(game['id']) }}" class="card-img" alt="..." style="">
